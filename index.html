@@ -5,20 +5,93 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dokumentensammlung</title>
     <style>
-        body { font-family: Arial, sans-serif; }
-        h1 { text-align: center; }
-        ul { list-style-type: none; padding: 0; }
-        li { margin: 10px 0; }
-        a { text-decoration: none; color: #1a73e8; }
-        a:hover { text-decoration: underline; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f1f3f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 20px;
+        }
+        header {
+            background: #ffffff;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .search-bar {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .search-bar input {
+            width: 100%;
+            max-width: 600px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .documents {
+            margin-top: 20px;
+        }
+        .documents ul {
+            list-style: none;
+            padding: 0;
+        }
+        .documents li {
+            margin: 10px 0;
+        }
+        .documents a {
+            text-decoration: none;
+            color: #1a73e8;
+            font-size: 18px;
+            display: block;
+        }
+        .documents a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
-    <h1>Meine Dokumentensammlung</h1>
-    <ul>
-        <li><a href="dokument1.pdf" target="_blank">du</a></li>
-        <li><a href="dokument2.pdf" target="_blank">hs</a></li>
-        <li><a href="dokument3.pdf" target="_blank">haha</a></li>
-    </ul>
+    <header>
+        <div class="container">
+            <h1>Dokumentensammlung</h1>
+            <div class="search-bar">
+                <input type="text" id="search" placeholder="Dokumente durchsuchen...">
+            </div>
+        </div>
+    </header>
+    <div class="container documents">
+        <ul>
+            <li><a href="dokument1.pdf" target="_blank">Dokument 1</a></li>
+            <li><a href="dokument2.pdf" target="_blank">Dokument 2</a></li>
+            <li><a href="dokument3.pdf" target="_blank">Dokument 3</a></li>
+            <!-- Füge hier weitere Dokumente hinzu -->
+        </ul>
+    </div>
+    <script>
+        // Beispielhafte Suchfunktionalität (keine echte Suche)
+        document.getElementById('search').addEventListener('input', function() {
+            var searchValue = this.value.toLowerCase();
+            var links = document.querySelectorAll('.documents li');
+            links.forEach(function(link) {
+                var text = link.textContent.toLowerCase();
+                if (text.includes(searchValue)) {
+                    link.style.display = '';
+                } else {
+                    link.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
